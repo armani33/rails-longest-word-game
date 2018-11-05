@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="container">
+    <h3>Your letter</h3>
+    <ul class="letters">
+      <% @letters_game.each do |letter| %>
+       <div class="let"><li> <%= letter %></li></div>
+      <% end %>
+    </ul>
+    <form action="/score" method="get">
+      <%= hidden_field_tag :letters, @letters_game %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="text" name="word" placeholder="What is your longest word?" autocomplete="off">
+      <input type="submit">
+    </form>
+  </div>
+</div>

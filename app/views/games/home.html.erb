@@ -9,8 +9,30 @@
     <form action="/score" method="get">
       <%= hidden_field_tag :letters, @letters_game %>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <input type="text" name="word" placeholder="What is your longest word?" autocomplete="off">
+      <input id="the_input" type="text" name="word" placeholder="What is your longest word?" autocomplete="off">
       <input type="submit">
     </form>
   </div>
 </div>
+
+<script>
+
+  const carts= document.querySelectorAll("li")
+
+  document.querySelector("#the_input").addEventListener('keyup', (event) => {
+    carts.forEach((cart) => {
+      cart.style.background = "blue";
+    })
+
+  event.target.value.toUpperCase().split(" ").forEach((char) => {
+    for (char i = 0; i< carts.length ; i++) {
+     if (carts[i].innerText == char && carts[i].style.background == "blue")  {
+       carts[i].style.background = "red";
+       break;
+       }
+     };
+   });
+
+
+  }
+</script>

@@ -11,6 +11,7 @@ class GamesController < ApplicationController
   end
 
   def check
+    raise
     @letters_play = params["letters"].split(" ")
     @word.upcase.split("").all? do |char|
     @letters_play.delete_at(@letters_play.index(char)) if @letters_play.include? char
